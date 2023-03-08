@@ -151,7 +151,9 @@ class MyScene extends THREE.Scene {
     this.guiControls = {
       // En el contexto de una función   this   alude a la función
       lightIntensity : 0.5,
-      axisOnOff : true
+      axisOnOff : true,
+      flatShading : false
+
     }
 
     // Se crea una sección para los controles de esta clase
@@ -166,7 +168,12 @@ class MyScene extends THREE.Scene {
     folder.add (this.guiControls, 'axisOnOff')
       .name ('Mostrar ejes : ')
       .onChange ( (value) => this.setAxisVisible (value) );
+
+    folder.add (this.guiControls, 'flatShading')
+      .name('Sombreado plano : ')
+      .onChange ( (value) => this.flatShading (value) );
     
+
     return gui;
   }
   
