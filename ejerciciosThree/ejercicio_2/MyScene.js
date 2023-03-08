@@ -10,6 +10,7 @@ import { Stats } from '../libs/stats.module.js'
 
 import { MyBox } from './ejercicio_2_box.js'
 import { Cone } from './ejercicio_2_cone.js'
+import { Cylind } from './ejercicio_2_cylinder.js'
  
 /// La clase fachada del modelo
 /**
@@ -79,6 +80,8 @@ class MyScene extends THREE.Scene {
     this.add (this.box);
     this.cono = new Cone(this.gui, "Controles de el Cono");
     this.add (this.cono);
+    this.cylind = new Cylind(this.gui, "Controles de el Cilindro");
+    this.add (this.cylind);
   }
   
   initStats() {
@@ -104,7 +107,7 @@ class MyScene extends THREE.Scene {
     //   Los planos de recorte cercano y lejano
     this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
     // También se indica dónde se coloca
-    this.camera.position.set (20, 10, 20);
+    this.camera.position.set (40, 30, 40);
     // Y hacia dónde mira
     var look = new THREE.Vector3 (0,0,0);
     this.camera.lookAt(look);
@@ -256,6 +259,7 @@ class MyScene extends THREE.Scene {
     // Se actualiza el resto del modelo
     this.box.update();
     this.cono.update();
+    this.cylind.update();
     
     // Le decimos al renderizador "visualiza la escena que te indico usando la cámara que te estoy pasando"
     this.renderer.render (this, this.getCamera());
