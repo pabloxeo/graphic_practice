@@ -11,6 +11,7 @@ import { Stats } from '../libs/stats.module.js'
 import { MyBox } from './ejercicio_2_box.js'
 import { Cone } from './ejercicio_2_cone.js'
 import { Cylind } from './ejercicio_2_cylinder.js'
+import { Sphere } from './ejercicio_2_sphere.js'
  
 /// La clase fachada del modelo
 /**
@@ -82,6 +83,8 @@ class MyScene extends THREE.Scene {
     this.add (this.cono);
     this.cylind = new Cylind(this.gui, "Controles de el Cilindro");
     this.add (this.cylind);
+    this.sphere = new Sphere(this.gui, "Controles de la Esfera");
+    this.add (this.sphere);
   }
   
   initStats() {
@@ -260,6 +263,7 @@ class MyScene extends THREE.Scene {
     this.box.update();
     this.cono.update();
     this.cylind.update();
+    this.sphere.update();
     
     // Le decimos al renderizador "visualiza la escena que te indico usando la cámara que te estoy pasando"
     this.renderer.render (this, this.getCamera());
