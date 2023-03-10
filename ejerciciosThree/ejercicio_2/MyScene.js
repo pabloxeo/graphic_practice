@@ -12,6 +12,8 @@ import { MyBox } from './ejercicio_2_box.js'
 import { Cone } from './ejercicio_2_cone.js'
 import { Cylind } from './ejercicio_2_cylinder.js'
 import { Sphere } from './ejercicio_2_sphere.js'
+import { Torus } from './ejercicio_2_torus.js'
+import { Icos } from './ejercicio_2_icos.js'
  
 /// La clase fachada del modelo
 /**
@@ -85,6 +87,10 @@ class MyScene extends THREE.Scene {
     this.add (this.cylind);
     this.sphere = new Sphere(this.gui, "Controles de la Esfera");
     this.add (this.sphere);
+    this.torus = new Torus(this.gui, "Controles de el Toro");
+    this.add (this.torus);
+    this.icos = new Icos(this.gui, "Controles de el Icosaedro");
+    this.add (this.icos);
   }
   
   initStats() {
@@ -158,7 +164,6 @@ class MyScene extends THREE.Scene {
       // En el contexto de una función   this   alude a la función
       lightIntensity : 0.5,
       axisOnOff : true,
-      flatShading : false
 
     }
 
@@ -174,11 +179,6 @@ class MyScene extends THREE.Scene {
     folder.add (this.guiControls, 'axisOnOff')
       .name ('Mostrar ejes : ')
       .onChange ( (value) => this.setAxisVisible (value) );
-
-    folder.add (this.guiControls, 'flatShading')
-      .name('Sombreado plano : ')
-      .onChange ( (value) => this.flatShading (value) );
-    
 
     return gui;
   }
@@ -264,6 +264,8 @@ class MyScene extends THREE.Scene {
     this.cono.update();
     this.cylind.update();
     this.sphere.update();
+    this.torus.update();
+    this.icos.update();
     
     // Le decimos al renderizador "visualiza la escena que te indico usando la cámara que te estoy pasando"
     this.renderer.render (this, this.getCamera());

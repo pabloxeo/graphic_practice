@@ -10,7 +10,7 @@ class MyBox extends THREE.Object3D {
     this.createGUI(gui,boxGui);
     
     // Un Mesh se compone de geometría y material
-    var boxGeom = new THREE.BoxGeometry (1,1,1);
+    var boxGeom = new THREE.SphereGeometry (1,3,2);
     // Como material se crea uno a partir de un color
     var boxMat = new THREE.MeshNormalMaterial();
   
@@ -36,8 +36,8 @@ class MyBox extends THREE.Object3D {
       // Cuando se pulse se ejecutará esta función.
       reset : () => {
         this.guiControls.sizeX = 1.0;
-        this.guiControls.sizeY = 1.0;
-        this.guiControls.sizeZ = 1.0;
+        this.guiControls.sizeY = 3.0;
+        this.guiControls.sizeZ = 2.0;
       }
     } 
     

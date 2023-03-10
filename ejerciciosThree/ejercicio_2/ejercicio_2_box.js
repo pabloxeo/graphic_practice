@@ -13,6 +13,8 @@ class MyBox extends THREE.Object3D {
     var boxGeom = new THREE.BoxGeometry (1,1,1);
     // Como material se crea uno a partir de un color
     var boxMat = new THREE.MeshNormalMaterial();
+    boxMat.flatShading = true;
+    boxMat.needsUpdate = true;
   
     // Ya podemos construir el Mesh
     var box = new THREE.Mesh (boxGeom, boxMat);

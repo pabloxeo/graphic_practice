@@ -12,6 +12,8 @@ class Cylind extends THREE.Object3D {
     var cylindGeom = new THREE.CylinderGeometry (3, 3, 1, 3);
     // Como material se crea uno a partir de un color
     var cylindMat = new THREE.MeshNormalMaterial();
+    cylindMat.flatShading = true;
+    cylindMat.needsUpdate = true;
   
     // Ya podemos construir el Mesh
     var cylind = new THREE.Mesh (cylindGeom, cylindMat);
@@ -73,6 +75,8 @@ class Cylind extends THREE.Object3D {
     var cylindGeom = new THREE.CylinderGeometry (this.guiControls.radio_top, this.guiControls.radio_bot, this.guiControls.altura, this.guiControls.resolution);
     // Como material se crea uno a partir de un color
     var cylindMat = new THREE.MeshNormalMaterial();
+    cylindMat.flatShading = true;
+    cylindMat.needsUpdate = true;
   
     // Ya podemos construir el Mesh
     var cylind = new THREE.Mesh (cylindGeom, cylindMat);

@@ -12,6 +12,8 @@ class Sphere extends THREE.Object3D {
     var sphereGeom = new THREE.SphereGeometry(1, 3, 2);
     // Como material se crea uno a partir de un color
     var sphereMat = new THREE.MeshNormalMaterial();
+    sphereMat.flatShading = true;
+    sphereMat.needsUpdate = true;
   
     // Ya podemos construir el Mesh
     var sphere = new THREE.Mesh (sphereGeom, sphereMat);
@@ -29,6 +31,10 @@ class Sphere extends THREE.Object3D {
       radio : 1.0,
       r_h : 3.0,
       r_v : 2.0,
+
+      rotX : 0.0,
+      rotY : 0.0,
+      rotZ : 0.0,
       
       // Un botón para dejarlo todo en su posición inicial
       // Cuando se pulse se ejecutará esta función.
@@ -44,7 +50,7 @@ class Sphere extends THREE.Object3D {
     // Estas lineas son las que añaden los componentes de la interfaz
     // Las tres cifras indican un valor mínimo, un máximo y el incremento
     // El método   listen()   permite que si se cambia el valor de la variable en código, el deslizador de la interfaz se actualice
-    folder.add (this.guiControls, 'radio', 1.0, 200.0, 0.1).name ('Radio: ').listen();
+    folder.add (this.guiControls, 'radio', 1.0, 5.0, 0.1).name ('Radio: ').listen();
     folder.add (this.guiControls, 'r_h', 3.0, 20.0, 1.0).name ('Res Horizontal: ').listen();
     folder.add (this.guiControls, 'r_v', 2.0, 20.0, 1.0).name ('Res Vertical: ').listen();
 
@@ -63,10 +69,12 @@ class Sphere extends THREE.Object3D {
     var sphereGeom = new THREE.SphereGeometry(this.guiControls.radio, this.guiControls.r_h, this.guiControls.r_v);
     // Como material se crea uno a partir de un color
     var sphereMat = new THREE.MeshNormalMaterial();
+    sphereMat.flatShading = true;
+    sphereMat.needsUpdate = true;
   
     // Ya podemos construir el Mesh
     var sphere = new THREE.Mesh (sphereGeom, sphereMat);
-    this.position.set(10, 10, 0);
+    this.position.set(0, 10, 10);
     // Y añadirlo como hijo del Object3D (el this)
     this.add (sphere);
     
